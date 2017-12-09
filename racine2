@@ -1,0 +1,12 @@
+import math
+import decimal
+p, q = 2, 1
+nbDecimale = 10000
+nbIt = int(math.ceil(math.log(nbDecimale, 2)))
+decimal.getcontext().prec = nbDecimale + 1
+for i in range(1, nbIt + 1):
+    p, q = p * p + 2 * q * q, 2 * q * p
+fichier = open("decimales.txt", "w")
+fichier.write(str(decimal.Decimal(p) / decimal.Decimal(q)))
+fichier.close()
+print("Les decimales ont ete ecrites dans fichier.txt.")
